@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "3d610330-ecf3-4f0d-b354-bf273ffb130b",
+		"name": "Birds",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37762819"
+	},
+	"item": [
+		{
+			"name": "Delete bird",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/birds?id=5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"birds"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update bird",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3,\n    \"name\": \"ufo\",\n    \"color\": \"black\",\n    \"weight\": 10000,\n    \"height\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/birds"
+			},
+			"response": []
+		},
+		{
+			"name": "Post bird",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"ufo\",\n    \"color\": \"green\",\n    \"weight\": 10000,\n    \"height\": 1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/birds/new"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all birds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/birds/all"
+			},
+			"response": []
+		},
+		{
+			"name": "Get birds by",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/birds?name=ufo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"birds"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "ufo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all sightings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/sightings/all"
+			},
+			"response": []
+		},
+		{
+			"name": "Post sighting",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"birdId\": 3,\n    \"location\": \"Home\",\n    \"timestamp\": \"2024-08-21T08:00:01.0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/sightings/new"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete sighting",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/sightings?id=4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sightings"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update sighting",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": 1, \"birdId\": 1, \"location\": \"Bucharest\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/sightings"
+			},
+			"response": []
+		},
+		{
+			"name": "Get sightings by",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/sightings?location=Home",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sightings"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2024-08-22T08:00:01.000000",
+							"disabled": true
+						},
+						{
+							"key": "until",
+							"value": "2024-08-22T08:00:01.000000",
+							"disabled": true
+						},
+						{
+							"key": "location",
+							"value": "Home"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

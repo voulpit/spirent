@@ -1,0 +1,11 @@
+org.example
+org.example.controller
+org.example.domain.dto
+org.example.domain.exception
+org.example.domain.model
+org.example.infra.entity
+org.example.infra.mapper
+org.example.infra.repo
+org.example.service
+org.example.service.impl
+org.example.util
