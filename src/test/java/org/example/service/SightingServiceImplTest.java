@@ -88,6 +88,15 @@ public class SightingServiceImplTest {
     }
 
     @Test
+    public void testGetSighting() {
+        // when
+        doReturn(Optional.of(new Sighting())).when(sightingRepository).findById(1L);
+        sightingService.getSighting(1L);
+        // then
+        verify(sightingRepository, times(1)).findById(1L);
+    }
+
+    @Test
     public void testCreateSighting_callsRepo() {
         // when
         doReturn(Optional.of(new Bird())).when(birdRepository).findById(1L);

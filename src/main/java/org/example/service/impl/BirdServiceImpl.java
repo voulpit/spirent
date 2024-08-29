@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.example.util.Constants.BIRD_COLOR_MAX_LEN;
@@ -47,6 +48,18 @@ public class BirdServiceImpl implements BirdService {
         }
         birds.forEach(bird -> result.getBirds().add(BirdMapper.entityToModel(bird)));
         return result;
+    }
+
+    @Override
+    public BirdResponseDto getBird(Long id) {
+        checkBirdId(id);
+        Optional<Bird> birdOptional = birdRepository.findById(id);
+        if (birdOptional.isEmpty()) {
+            throw new NoSuchElementException("Invalid bird id!");
+        }
+        BirdResponseDto responseDto = new BirdResponseDto();
+        responseDto.getBirds().add(BirdMapper.entityToModel(birdOptional.get()));
+        return responseDto;
     }
 
     @Override
@@ -99,6 +112,9 @@ public class BirdServiceImpl implements BirdService {
     private void checkBirdId(Long id) {
         if (id == null) {
             throw new BirdValidationException("Bird id not provided!");
+        }
+        if (id < 0) {
+            throw new BirdValidationException("Invalid Bird id!");
         }
     }
 

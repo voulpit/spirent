@@ -19,6 +19,12 @@ public interface BirdService {
     BirdResponseDto getBirds(String name, String color);
 
     /**
+     * Retrieves one Bird by id.
+     * @return a dto that contains an array of size one which has the retrieved Bird.
+     */
+    BirdResponseDto getBird(Long id);
+
+    /**
      * Creates a new bird according to given characteristics.
      * @param name name of the bird, mandatory
      * @param color color of the bird, mandatory

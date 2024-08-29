@@ -23,6 +23,12 @@ public interface SightingService {
     SightingResponseDto getSightings(Long birdId, String location, LocalDateTime from, LocalDateTime until);
 
     /**
+     * Retrieves a sighting by id.
+     * @return a dto that contains an array of size one which has the retrieved Sighting.
+     */
+    SightingResponseDto getSighting(Long id);
+
+    /**
      * Creates a new sighting according to given attributes.
      * @param birdId id of the sighted bird, mandatory
      * @param location location of the sighting, mandatory

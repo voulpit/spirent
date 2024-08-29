@@ -31,6 +31,11 @@ public class SightingController {
         return ResponseEntity.ok(sightingService.getSightings(birdId, location, dateTimeFrom, dateTimeUntil));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<SightingResponseDto> getSighting(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(sightingService.getSighting(id));
+    }
+
     @PostMapping("/new")
     public ResponseEntity<SightingResponseDto> createSighting(@RequestBody CreateSightingRequestDto requestDto) {
         return ResponseEntity.ok(sightingService.createSighting(requestDto.getBirdId(), requestDto.getLocation(),

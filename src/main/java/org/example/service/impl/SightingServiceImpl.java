@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.example.util.Constants.SIGHTING_LOCATION_MAX_LEN;
@@ -43,6 +44,18 @@ public class SightingServiceImpl implements SightingService {
         SightingResponseDto responseDto = new SightingResponseDto();
         List<Sighting> sightings = sightingRepository.findAllByBirdIdAndLocationAndTimeFrame(birdId, location, from, until);
         sightings.forEach(sighting -> responseDto.getSightings().add(SightingMapper.entityToModel(sighting)));
+        return responseDto;
+    }
+
+    @Override
+    public SightingResponseDto getSighting(Long id) {
+        checkSightingId(id);
+        Optional<Sighting> sightingOptional = sightingRepository.findById(id);
+        if (sightingOptional.isEmpty()) {
+            throw new NoSuchElementException("Invalid sighting id!");
+        }
+        SightingResponseDto responseDto = new SightingResponseDto();
+        responseDto.getSightings().add(SightingMapper.entityToModel(sightingOptional.get()));
         return responseDto;
     }
 
@@ -112,6 +125,9 @@ public class SightingServiceImpl implements SightingService {
     private void checkSightingId(Long id) {
         if (id == null) {
             throw new SightingValidationException("Sighting id not provided!");
+        }
+        if (id < 0) {
+            throw new SightingValidationException("Invalid sighting id!");
         }
     }
 

@@ -78,6 +78,14 @@ public class BirdControllerTest {
     }
 
     @Test
+    public void testGetBird_callsService() {
+        // when
+        birdController.getBird(1L);
+        // then
+        verify(birdService, times(1)).getBird(1L);
+    }
+
+    @Test
     public void testCreateBird_callsService() {
         // when
         birdController.createBird(new CreateBirdRequestDto());

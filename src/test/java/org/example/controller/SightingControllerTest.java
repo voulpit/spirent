@@ -70,6 +70,14 @@ public class SightingControllerTest {
     }
 
     @Test
+    public void testGetSighting_callsService() {
+        // when
+        sightingController.getSighting(1L);
+        // then
+        verify(sightingService, times(1)).getSighting(1L);
+    }
+
+    @Test
     public void testCreateSighting_callsService() {
         // when
         sightingController.createSighting(new CreateSightingRequestDto());

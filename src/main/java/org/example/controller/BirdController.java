@@ -25,6 +25,11 @@ public class BirdController {
         return ResponseEntity.ok(birdService.getBirds(name, color));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<BirdResponseDto> getBird(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(birdService.getBird(id));
+    }
+
     @PostMapping("/new")
     public ResponseEntity<BirdResponseDto> createBird(@RequestBody CreateBirdRequestDto requestDto) {
         return ResponseEntity.ok(birdService.createBird(requestDto.getName(), requestDto.getColor(),

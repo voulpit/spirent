@@ -95,6 +95,15 @@ public class BirdServiceImplTest {
     }
 
     @Test
+    public void testGetBird_callsRepo() {
+        // when
+        doReturn(Optional.of(new Bird())).when(birdRepository).findById(1L);
+        birdService.getBird(1L);
+        // then
+        verify(birdRepository, times(1)).findById(1L);
+    }
+
+    @Test
     public void testCreateBird_callsRepo() {
         // when
         birdService.createBird("bird", "color", null, null);
